@@ -31,8 +31,13 @@ public class PlayerCharacter : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		charCon.SimpleMove (moveDir * maxSpeed * Time.fixedDeltaTime);
-		room.transform.Translate((transform.position.x - room.transform.position.x) * Vector3.right);
+		if (charCon.isGrounded) {
+			charCon.SimpleMove (moveDir * maxSpeed * Time.fixedDeltaTime);
+			room.transform.Translate((transform.position.x - room.transform.position.x) * Vector3.right);
+		}
+		else {
+			
+		}
 	}
 
 	public void SetDirection ( Vector3 moveInput) {
